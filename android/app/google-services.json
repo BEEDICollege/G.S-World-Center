@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "42838233391",
+    "project_id": "gsworldcenter9",
+    "storage_bucket": "gsworldcenter9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42838233391:android:76b7a388e543af98e551da",
+        "android_client_info": {
+          "package_name": "com.example.gs_world_center"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkoKSgPmUhbzklQkViyMr-GjsOV7pUnRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

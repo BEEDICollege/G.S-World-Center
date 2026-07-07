@@ -1,0 +1,33 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "gsworldcenter9",
+          "appId": "1:42838233391:android:76b7a388e543af98e551da",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "gsworldcenter9",
+          "configurations": {
+            "android": "1:42838233391:android:76b7a388e543af98e551da",
+            "ios": "1:42838233391:ios:740e23acbbcfc823e551da",
+            "macos": "1:42838233391:ios:740e23acbbcfc823e551da",
+            "web": "1:42838233391:web:8ec34e34c378b139e551da",
+            "windows": "1:42838233391:web:81802c619de03cdce551da"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

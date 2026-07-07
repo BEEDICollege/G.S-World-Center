@@ -1,0 +1,74 @@
+name: gs_world_center
+description: "GS World Center Portfolio Website"
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.9
+
+  # State Management
+  provider: ^6.1.5+1
+
+  # Navigation
+  go_router: ^17.3.0
+
+  # UI
+  google_fonts: ^8.1.0
+  flutter_svg: ^2.3.0
+  flutter_animate: ^4.5.2
+  animated_text_kit: ^4.2.3
+  font_awesome_flutter: ^11.0.0
+  icons_plus: ^5.0.0
+  carousel_slider: ^5.1.2
+  lottie: ^3.3.3
+
+  # Utilities
+  url_launcher: ^6.3.2
+  shared_preferences: ^2.5.3
+  visibility_detector: ^0.4.0+2
+
+  # Text
+  flutter_markdown: ^0.7.7+1
+  flutter_html: ^3.0.0
+  flutter_screenutil: ^5.9.3
+  animate_do: ^5.1.0
+  scrollable_positioned_list: ^0.3.8
+  firebase_core: ^4.11.0
+  firebase_analytics: ^12.4.3
+  http: ^1.6.0
+  intl: ^0.20.3
+  collection: ^1.19.1
+  animated_number: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/logos/logo.png
+    - assets/logos/logo.ico
+    - assets/animations/
+    - assets/resume/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
