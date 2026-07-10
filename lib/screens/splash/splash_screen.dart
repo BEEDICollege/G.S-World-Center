@@ -310,20 +310,20 @@ class _SplashScreenState extends State<SplashScreen>
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.25),
+                        color: const Color.fromARGB(255, 24, 64, 228).withOpacity(0.25),
                         width: 2,
                       ),
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        'assets/logos/logo.ico',
+                        'assets/logos/logo.png',
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: Colors.white,
                             child: const Center(
                               child: Text(
-                                'GS',
+                                'G.S',
                                 style: TextStyle(
                                   fontSize: 50,
                                   fontWeight: FontWeight.bold,
@@ -398,7 +398,7 @@ class _SplashScreenState extends State<SplashScreen>
           child: SlideTransition(
             position: _slideAnimation,
             child: Text(
-              'GS World Center',
+              'G.S World Center',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: fontSize,

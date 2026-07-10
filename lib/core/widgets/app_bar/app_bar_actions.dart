@@ -15,20 +15,24 @@ class AppBarActions extends StatelessWidget {
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (!isMobile) ...[
-              _buildSocialIcon(Icons.code, 'GitHub'),
-              _buildSocialIcon(Icons.work, 'LinkedIn'),
-              _buildSocialIcon(Icons.camera_alt, 'Instagram'),
-              const SizedBox(width: 8),
-            ],
+            // Theme Toggle
             _buildThemeToggle(),
-            const SizedBox(width: 8),
+            const SizedBox(width: 4),
+            
+            // Action Buttons - Desktop only
             if (!isMobile) ...[
               _buildActionButton('Resume', Icons.download, () {}),
               const SizedBox(width: 4),
               _buildActionButton('Hire Me', Icons.work_outline, () {}),
+              const SizedBox(width: 4),
             ],
-            // REMOVED: The menu button from here - it's now in the app bar
+            
+            // Social Icons - Desktop only
+            if (!isMobile) ...[
+              _buildSocialIcon(Icons.code, 'GitHub'),
+              _buildSocialIcon(Icons.work, 'LinkedIn'),
+              _buildSocialIcon(Icons.camera_alt, 'Instagram'),
+            ],
           ],
         );
       },
@@ -37,10 +41,12 @@ class AppBarActions extends StatelessWidget {
 
   Widget _buildSocialIcon(IconData icon, String label) {
     return IconButton(
-      icon: Icon(icon, size: 20, color: Colors.white70),
+      icon: Icon(icon, size: 18, color: Colors.white70),
       onPressed: () {},
       tooltip: label,
       splashRadius: 20,
+      padding: const EdgeInsets.all(4),
+      constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
     );
   }
 
@@ -55,6 +61,8 @@ class AppBarActions extends StatelessWidget {
           ),
           onPressed: provider.toggleTheme,
           splashRadius: 20,
+          padding: const EdgeInsets.all(4),
+          constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
         );
       },
     );
@@ -64,23 +72,30 @@ class AppBarActions extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [Color(0xFF2563EB), Color(0xFF7C3AED)],
+            colors: [Color(0xFF06B6D4), Color(0xFF10B981)],
           ),
           borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF06B6D4).withOpacity(0.3),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 16, color: Colors.white),
+            Icon(icon, size: 14, color: Colors.white),
             const SizedBox(width: 4),
             Text(
               label,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
             ),

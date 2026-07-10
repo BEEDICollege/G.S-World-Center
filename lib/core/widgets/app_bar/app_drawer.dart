@@ -17,37 +17,37 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color(0xFF1A1A2E),
-      width: 300,
+      backgroundColor: const Color(0xFF0A1628),
+      width: 280,
+      elevation: 20,
+      shadowColor: Colors.black54,
       child: SafeArea(
         child: Column(
           children: [
             // Drawer Header with Logo
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color(0xFF2563EB),
-                    Color(0xFF7C3AED),
                     Color(0xFF06B6D4),
-                    Color(0xFFEC4899),
+                    Color(0xFF10B981),
+                    Color(0xFF0D2B3E),
                   ],
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
                 children: [
-                  // Logo with border
+                  // Logo
                   Container(
-                    width: 70,
-                    height: 70,
+                    width: 56,
+                    height: 56,
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+                      color: const Color.fromARGB(255, 17, 5, 230),
+                      borderRadius: BorderRadius.circular(14),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.2),
@@ -57,21 +57,20 @@ class AppDrawer extends StatelessWidget {
                       ],
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(14),
                       child: Image.asset(
-                        'assets/logos/logo.jpeg',
+                        'assets/logos/logo.png',
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
-                          // Fallback if image doesn't load
                           return Container(
                             color: Colors.white,
                             child: const Center(
                               child: Text(
-                                'GS',
+                                'G.S',
                                 style: TextStyle(
-                                  fontSize: 28,
+                                  fontSize: 24,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF2563EB),
+                                  color: Color(0xFF06B6D4),
                                 ),
                               ),
                             ),
@@ -80,22 +79,43 @@ class AppDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 14),
-                  const Text(
-                    'GS World Center',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                  const SizedBox(width: 14),
+                  // Company Info
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'G.S World Center',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          'Premium Software Solutions',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  const Text(
-                    'Premium Software Solutions',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white70,
+                  // Close Button
+                  IconButton(
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 20,
                     ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(minWidth: 30, minHeight: 30),
                   ),
                 ],
               ),
@@ -103,13 +123,14 @@ class AppDrawer extends StatelessWidget {
             const SizedBox(height: 8),
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 children: [
                   _buildDrawerItem(
                     context,
                     'Home',
                     Icons.home_outlined,
                     '/home',
+                    true,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -117,6 +138,7 @@ class AppDrawer extends StatelessWidget {
                     'About',
                     Icons.person_outline,
                     '/about',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -124,6 +146,7 @@ class AppDrawer extends StatelessWidget {
                     'Skills',
                     Icons.code_outlined,
                     '/skills',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -131,6 +154,7 @@ class AppDrawer extends StatelessWidget {
                     'Services',
                     Icons.work_outline,
                     '/services',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -138,6 +162,7 @@ class AppDrawer extends StatelessWidget {
                     'Projects',
                     Icons.grid_view_outlined,
                     '/projects',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -145,6 +170,7 @@ class AppDrawer extends StatelessWidget {
                     'Experience',
                     Icons.timeline_outlined,
                     '/experience',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -152,6 +178,7 @@ class AppDrawer extends StatelessWidget {
                     'Education',
                     Icons.school_outlined,
                     '/education',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -159,6 +186,7 @@ class AppDrawer extends StatelessWidget {
                     'Certificates',
                     Icons.verified_outlined,
                     '/certificates',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -166,6 +194,7 @@ class AppDrawer extends StatelessWidget {
                     'Testimonials',
                     Icons.rate_review_outlined,
                     '/testimonials',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -173,6 +202,7 @@ class AppDrawer extends StatelessWidget {
                     'Gallery',
                     Icons.photo_library_outlined,
                     '/gallery',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -180,6 +210,7 @@ class AppDrawer extends StatelessWidget {
                     'Blog',
                     Icons.article_outlined,
                     '/blog',
+                    false,
                   ),
                   _buildDivider(),
                   _buildDrawerItem(
@@ -187,11 +218,12 @@ class AppDrawer extends StatelessWidget {
                     'Contact',
                     Icons.contact_mail_outlined,
                     '/contact',
+                    false,
                   ),
                   _buildDivider(),
                   // Social Media Section
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -199,44 +231,45 @@ class AppDrawer extends StatelessWidget {
                           'Connect With Me',
                           style: TextStyle(
                             color: Colors.white54,
-                            fontSize: 12,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
                           ),
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 10),
                         Row(
                           children: [
                             _buildSocialIcon(Icons.code, 'GitHub'),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 6),
                             _buildSocialIcon(Icons.work, 'LinkedIn'),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 6),
                             _buildSocialIcon(Icons.camera_alt, 'Instagram'),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 6),
                             _buildSocialIcon(Icons.video_library, 'YouTube'),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 6),
                             _buildSocialIcon(Icons.chat, 'WhatsApp'),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  const Divider(color: Colors.white10),
+                  const Divider(color: Colors.white10, height: 1),
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(12),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Expanded(
                           child: _buildDrawerButton(
-                            'Resume',
+                            '📄 Resume',
                             Icons.download,
                             () {},
+                            isPrimary: false,
                           ),
                         ),
                         const SizedBox(width: 8),
                         Expanded(
                           child: _buildDrawerButton(
-                            'Hire Me',
+                            '💼 Hire Me',
                             Icons.work,
                             () {},
                             isPrimary: true,
@@ -245,6 +278,7 @@ class AppDrawer extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
@@ -259,32 +293,40 @@ class AppDrawer extends StatelessWidget {
     String title,
     IconData icon,
     String route,
+    bool isActive,
   ) {
     return ListTile(
       leading: Icon(
         icon,
-        color: Colors.white70,
+        color: isActive ? const Color(0xFF06B6D4) : Colors.white60,
         size: 22,
       ),
       title: Text(
         title,
-        style: const TextStyle(
-          color: Colors.white,
+        style: TextStyle(
+          color: isActive ? const Color(0xFF06B6D4) : Colors.white70,
           fontSize: 14,
-          fontWeight: FontWeight.w500,
+          fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
         ),
       ),
-      trailing: const Icon(
-        Icons.chevron_right,
-        color: Colors.white30,
-        size: 20,
-      ),
+      trailing: isActive
+          ? Container(
+              width: 4,
+              height: 20,
+              decoration: BoxDecoration(
+                color: const Color(0xFF06B6D4),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            )
+          : const SizedBox.shrink(),
       onTap: () {
         Navigator.pop(context);
         Navigator.pushNamed(context, route);
       },
       hoverColor: Colors.white10,
       splashColor: Colors.white10,
+      dense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
     );
   }
 
@@ -292,8 +334,8 @@ class AppDrawer extends StatelessWidget {
     return const Divider(
       color: Colors.white10,
       height: 1,
-      indent: 16,
-      endIndent: 16,
+      indent: 12,
+      endIndent: 12,
     );
   }
 
@@ -307,7 +349,7 @@ class AppDrawer extends StatelessWidget {
       child: Icon(
         icon,
         color: Colors.white60,
-        size: 20,
+        size: 18,
       ),
     );
   }
@@ -319,11 +361,11 @@ class AppDrawer extends StatelessWidget {
     bool isPrimary = false,
   }) {
     return Container(
-      height: 40,
+      height: 38,
       decoration: BoxDecoration(
         gradient: isPrimary
             ? const LinearGradient(
-                colors: [Color(0xFF2563EB), Color(0xFF7C3AED)],
+                colors: [Color(0xFF06B6D4), Color(0xFF10B981)],
               )
             : null,
         border: isPrimary
@@ -343,15 +385,15 @@ class AppDrawer extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: isPrimary ? Colors.white : Colors.white70,
-                size: 16,
+                color: isPrimary ? const Color.fromARGB(255, 5, 104, 234) : Colors.white70,
+                size: 14,
               ),
               const SizedBox(width: 4),
               Text(
                 label,
                 style: TextStyle(
-                  color: isPrimary ? Colors.white : Colors.white70,
-                  fontSize: 12,
+                  color: isPrimary ? const Color.fromARGB(255, 5, 126, 219) : Colors.white70,
+                  fontSize: 11,
                   fontWeight: FontWeight.w600,
                 ),
               ),

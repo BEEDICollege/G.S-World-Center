@@ -32,24 +32,25 @@ class _AppBarWidgetState extends State<AppBarWidget> {
             final isMobile = constraints.maxWidth < 800;
             
             return Container(
-              height: 80,
+              height: 70,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                 gradient: _isScrolled
                     ? const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Color(0xFF0A1628),
-                          Color(0xFF0D2B3E),
+                          Color(0xFF0A0E27),
+                          Color(0xFF0D2137),
                         ],
                       )
                     : const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Color(0xFF06B6D4), // Cyan
-                          Color(0xFF10B981), // Green
-                          Color(0xFF0D2B3E), // Dark Blue-Green
+                          Color(0xFF0A0E27),
+                          Color(0xFF1A1040),
+                          Color(0xFF0D2137),
                         ],
                       ),
                 boxShadow: _isScrolled
@@ -61,20 +62,37 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                         ),
                       ]
                     : null,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Row(
-                  children: [
-                    if (isMobile) _buildMenuButton(context),
-                    if (isMobile) const SizedBox(width: 8),
-                    const AppBarLogo(),
-                    const SizedBox(width: 40),
-                    if (!isMobile) const Expanded(child: AppBarMenu()),
-                    const Spacer(),
-                    const AppBarActions(),
-                  ],
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.white.withOpacity(_isScrolled ? 0.05 : 0),
+                    width: 1,
+                  ),
                 ),
+              ),
+              child: Row(
+                children: [
+                  // Menu Button - Mobile
+                  if (isMobile) ...[
+                    _buildMenuButton(context),
+                    const SizedBox(width: 8),
+                  ],
+                  
+                  // Logo
+                  const AppBarLogo(),
+                  
+                  const SizedBox(width: 20),
+                  
+                  // Navigation Menu - Desktop
+                  if (!isMobile) ...[
+                    const Expanded(child: AppBarMenu()),
+                    const SizedBox(width: 20),
+                  ],
+                  
+                  const Spacer(),
+                  
+                  // Actions
+                  const AppBarActions(),
+                ],
               ),
             );
           },
@@ -84,13 +102,21 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   }
 
   Widget _buildMenuButton(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.menu, color: Colors.white, size: 28),
-      onPressed: () {
-        Scaffold.of(context).openDrawer();
-      },
-      tooltip: 'Menu',
-      splashRadius: 24,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: IconButton(
+        icon: const Icon(Icons.menu, color: Colors.white, size: 24),
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+        tooltip: 'Menu',
+        splashRadius: 24,
+        padding: const EdgeInsets.all(8),
+        constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+      ),
     );
   }
 }

@@ -52,6 +52,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
@@ -59,8 +60,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/logos/logo.png
-    - assets/logos/logo.ico
+    - assets/logos/
     - assets/animations/
     - assets/resume/
 
@@ -72,3 +72,21 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logos/logo.png"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/logos/logo.png"
+    background_color: "#0A0E27"
+    theme_color: "#0A0E27"
+  windows:
+    generate: true
+    image_path: "assets/logos/logo.png"
+    icon_size: 48
+  macos:
+    generate: true
+    image_path: "assets/logos/logo.png"
